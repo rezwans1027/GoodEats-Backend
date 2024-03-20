@@ -4,6 +4,7 @@ import "dotenv/config";
 import mongoose from "mongoose";
 import myUserRoutes from "./routes/MyUserRoutes";
 import myRestaurantRoutes from "./routes/MyRestaurantRoutes";
+import restaurantRoutes from "./routes/RestaurantRoutes";
 import { v2 as cloudinary } from "cloudinary";
 
 const app = express();
@@ -27,6 +28,7 @@ app.get("/health", (req: Request, res: Response) => {
 
 app.use("/api/my/user", myUserRoutes);
 app.use("/api/my/restaurant", myRestaurantRoutes);
+app.use("/api/restaurant", restaurantRoutes);
 
 app.listen(4000, () => {
   console.log("Server is running on port 4000");
