@@ -1,6 +1,9 @@
 import express from "express";
-import { param } from "express-validator";
-import { searchRestaurant } from "../controllers/RestaurantController";
+import { body, param } from "express-validator";
+import {
+  getRestaurant,
+  searchRestaurant,
+} from "../controllers/RestaurantController";
 
 const router = express.Router();
 
@@ -12,6 +15,12 @@ router.get(
     .notEmpty()
     .withMessage("City must be a valid string"),
   searchRestaurant
+);
+
+router.get(
+  "/:restaurantId",
+  body("restaurantId").isMongoId().notEmpty(),
+  getRestaurant
 );
 
 export default router;
