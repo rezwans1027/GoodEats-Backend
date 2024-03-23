@@ -4,6 +4,7 @@ import {
   getRestaurant,
   searchRestaurant,
 } from "../controllers/RestaurantController";
+import { jwtCheck, jwtParse } from "../middleware/auth";
 
 const router = express.Router();
 
